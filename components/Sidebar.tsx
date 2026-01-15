@@ -29,6 +29,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         fixed md:static inset-y-0 left-0 z-40
         w-[85%] md:w-72 max-w-[320px] 
         bg-surface md:bg-black border-r border-border md:border-zinc-900 
+        md:transform-none md:transition-none
         transform transition-transform duration-300 ease-in-out shadow-2xl md:shadow-none
         flex flex-col dark:bg-black h-full
         ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
