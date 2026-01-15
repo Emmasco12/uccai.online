@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#000000" />
+    <title>UCCAI - AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            colors: {
+              background: 'rgb(var(--background) / <alpha-value>)',
+              surface: 'rgb(var(--surface) / <alpha-value>)',
+              primary: '#6366f1',    // indigo-500
+              primaryHover: '#4f46e5', // indigo-600
+              border: 'rgb(var(--border) / <alpha-value>)',
+            },
+            height: {
+              screen: '100dvh', // Use dynamic viewport height by default for screen class
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      :root {
+        --background: 255 255 255;
+        --surface: 244 244 245; /* zinc-100 */
+        --border: 228 228 231; /* zinc-200 */
+      }
+      
+      .dark {
+        --background: 0 0 0; /* Pure Black */
+        --surface: 9 9 11; /* zinc-950 */
+        --border: 39 39 42; /* zinc-800 */
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(113 113 122); /* zinc-500 */
+        border-radius: 3px;
+        opacity: 0.5;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #3f3f46;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgb(82 82 91);
+      }
+      
+      /* Mobile tap highlight color */
+      * {
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
+    "react-markdown": "https://esm.sh/react-markdown@^10.1.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-background text-zinc-900 dark:text-zinc-100 font-sans antialiased overflow-hidden transition-colors duration-200 selection:bg-indigo-500/30">
+    <div id="root"></div>
+    <script>
+      // Initialize theme from local storage
+      const updateThemeColor = (isDark) => {
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+          metaThemeColor.setAttribute('content', isDark ? '#000000' : '#ffffff');
+        }
+      };
+
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        updateThemeColor(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        updateThemeColor(false);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "UCCAI",
+  "description": "An advanced AI chat assistant powered by Google's Gemini 3 Flash model, featuring a modern dark UI, code syntax highlighting, and real-time streaming responses.",
+  "requestFramePermissions": []
+}
